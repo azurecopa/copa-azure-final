@@ -1,0 +1,839 @@
+// História completa das 22 Copas do Mundo FIFA realizadas (1930-2022)
+// + placeholder para 2026. Conteúdo factual original em PT-BR.
+
+export interface Podium {
+  champion: string;
+  championIso?: string;
+  runnerUp: string;
+  runnerUpIso?: string;
+  thirdPlace: string;
+  thirdPlaceIso?: string;
+  fourthPlace?: string;
+  fourthPlaceIso?: string;
+}
+
+export interface Player {
+  name: string;
+  country: string;
+  countryIso?: string;
+  goals?: number;
+}
+
+export interface WorldCup {
+  year: number;
+  host: { name: string; iso: string }; // ISO 3166-1 alpha-2 lowercase para flagcdn
+  hostCities?: string[];
+  dates: string;
+  teams: number;
+  matches: number;
+  goalsTotal?: number;
+  attendance?: string;
+  podium: Podium;
+  finalScore: string;
+  finalVenue: string;
+  topScorer: Player;
+  goldenBall?: Player;
+  bestYoungPlayer?: Player;
+  mascot?: string;
+  ball?: string;
+  history: string[]; // 2-4 parágrafos
+  curiosities: string[]; // 4-7 bullets
+  notableMatch?: string;
+  upcoming?: boolean;
+}
+
+export const worldCups: WorldCup[] = [
+  {
+    year: 1930,
+    host: { name: 'Uruguai', iso: 'uy' },
+    hostCities: ['Montevidéu'],
+    dates: '13 de julho a 30 de julho de 1930',
+    teams: 13,
+    matches: 18,
+    goalsTotal: 70,
+    attendance: '590 mil',
+    podium: {
+      champion: 'Uruguai', championIso: 'uy',
+      runnerUp: 'Argentina', runnerUpIso: 'ar',
+      thirdPlace: 'Estados Unidos', thirdPlaceIso: 'us',
+      fourthPlace: 'Iugoslávia',
+    },
+    finalScore: 'Uruguai 4×2 Argentina',
+    finalVenue: 'Estádio Centenário, Montevidéu',
+    topScorer: { name: 'Guillermo Stábile', country: 'Argentina', countryIso: 'ar', goals: 8 },
+    history: [
+      'A primeiríssima Copa do Mundo nasceu da visão do dirigente francês Jules Rimet e da escolha do Uruguai como anfitrião — o país era bicampeão olímpico (1924 e 1928) e celebrava 100 anos de independência. Para receber o evento, foi construído o Estádio Centenário, em Montevidéu, em apenas 8 meses.',
+      'Apenas 13 seleções participaram — somente 4 europeias (Bélgica, França, Romênia e Iugoslávia) cruzaram o Atlântico de navio para a competição, viagem que durou cerca de 15 dias. Inglaterra e outras potências europeias se recusaram a participar.',
+      'O Uruguai conquistou o título em casa diante de 93 mil torcedores, virando para 4×2 sobre a Argentina após estar perdendo por 2×1 no intervalo. Foi o primeiro de dois títulos da Celeste em apenas 20 anos.',
+    ],
+    curiosities: [
+      'A bola usada no primeiro tempo da final foi escolhida pela Argentina; no segundo tempo, pelo Uruguai. Os anfitriões venceram com a "sua" bola.',
+      'O primeiro gol da história das Copas foi marcado pelo francês Lucien Laurent, em França 4×1 México (13/jul/1930).',
+      'Os EUA terminaram em 3º lugar — melhor resultado norte-americano em Copas até hoje.',
+      'O troféu original ficou conhecido como "Jules Rimet Cup", dado em homenagem ao presidente da FIFA que idealizou o torneio.',
+      'A presença europeia foi tão fraca que a competição quase foi cancelada por falta de adesão.',
+    ],
+    notableMatch: 'Uruguai 4×2 Argentina — final de 30/07/1930 no Estádio Centenário com 93 mil pessoas, primeira final mundial.',
+  },
+
+  {
+    year: 1934,
+    host: { name: 'Itália', iso: 'it' },
+    hostCities: ['Roma', 'Milão', 'Florença', 'Bolonha', 'Turim', 'Trieste', 'Nápoles', 'Gênova'],
+    dates: '27 de maio a 10 de junho de 1934',
+    teams: 16,
+    matches: 17,
+    goalsTotal: 70,
+    podium: {
+      champion: 'Itália', championIso: 'it',
+      runnerUp: 'Tchecoslováquia', runnerUpIso: 'cz',
+      thirdPlace: 'Alemanha', thirdPlaceIso: 'de',
+      fourthPlace: 'Áustria',
+    },
+    finalScore: 'Itália 2×1 Tchecoslováquia (prorrogação)',
+    finalVenue: 'Estádio Nacional do PNF, Roma',
+    topScorer: { name: 'Oldřich Nejedlý', country: 'Tchecoslováquia', countryIso: 'cz', goals: 5 },
+    history: [
+      'A segunda Copa do Mundo aconteceu na Itália de Mussolini, que usou o evento como vitrine política do regime fascista. Foi a primeira a ter eliminatórias regionais — 32 nações disputaram para preencher 16 vagas.',
+      'O Uruguai, atual campeão, recusou-se a participar como retaliação à ausência europeia em 1930. Até hoje, é a única vez que um campeão em exercício não defendeu o título.',
+      'O torneio foi disputado em formato eliminatório direto — sem fase de grupos. A Itália venceu a Tchecoslováquia na final em Roma, em prorrogação, garantindo o primeiro título italiano sob forte pressão política.',
+    ],
+    curiosities: [
+      'Mussolini supostamente enviou um telegrama ao árbitro antes da final, mensagem nunca confirmada oficialmente.',
+      'Foi a única Copa em que o detentor do título (Uruguai) não participou.',
+      'Egito disputou — primeira nação africana e árabe da história das Copas.',
+      'O técnico italiano Vittorio Pozzo foi o mesmo que conquistou também a Copa de 1938 — único bicampeão como técnico.',
+      'A trofeu Jules Rimet foi entregue por Mussolini pessoalmente.',
+    ],
+    notableMatch: 'Itália 2×1 Tchecoslováquia — final 10/06/1934 em Roma, vitória italiana na prorrogação com gols de Orsi e Schiavio.',
+  },
+
+  {
+    year: 1938,
+    host: { name: 'França', iso: 'fr' },
+    hostCities: ['Paris', 'Marselha', 'Lyon', 'Bordeaux', 'Estrasburgo', 'Toulouse', 'Antibes', 'Le Havre'],
+    dates: '4 de junho a 19 de junho de 1938',
+    teams: 15,
+    matches: 18,
+    goalsTotal: 84,
+    podium: {
+      champion: 'Itália', championIso: 'it',
+      runnerUp: 'Hungria', runnerUpIso: 'hu',
+      thirdPlace: 'Brasil', thirdPlaceIso: 'br',
+      fourthPlace: 'Suécia',
+    },
+    finalScore: 'Itália 4×2 Hungria',
+    finalVenue: 'Stade Olympique de Colombes, Paris',
+    topScorer: { name: 'Leônidas da Silva', country: 'Brasil', countryIso: 'br', goals: 7 },
+    history: [
+      'A última Copa antes da Segunda Guerra Mundial foi disputada em meio a tensões políticas crescentes. A Espanha não participou por causa da Guerra Civil; Áustria foi anexada pela Alemanha nazista semanas antes do torneio e seus jogadores forçados a defender a seleção alemã.',
+      'O Brasil chegou ao 3º lugar com Leônidas da Silva, o "Diamante Negro", artilheiro do torneio com 7 gols. Lendário foi o jogo Brasil 6×5 Polônia, em que Leônidas marcou 4 gols (alguns descalço sob a chuva).',
+      'A Itália de Pozzo conquistou o bicampeonato batendo a Hungria por 4×2 na final em Paris, com 2 gols de Silvio Piola. Foi a última Copa antes do hiato de 12 anos por causa da Guerra.',
+    ],
+    curiosities: [
+      'O artilheiro Leônidas teria jogado descalço parte do icônico Brasil 6×5 Polônia, atolado na lama de Estrasburgo.',
+      'Foi a última Copa com formato eliminatório puro (sem fase de grupos) até 1986.',
+      'Argentina e Uruguai se recusaram a participar — entendiam que a sede deveria voltar à América.',
+      'A próxima Copa só aconteceria em 1950 — hiato de 12 anos por causa da 2ª Guerra Mundial.',
+      'O troféu Jules Rimet foi escondido em uma caixa de sapatos sob a cama do vice-presidente da FIFA italiana durante a guerra para não cair em mãos nazistas.',
+    ],
+    notableMatch: 'Brasil 6×5 Polônia (oitavas) — Leônidas marcou 4 gols, Polônia teve Wilimowski também com 4. Considerada uma das partidas mais épicas da história.',
+  },
+
+  {
+    year: 1950,
+    host: { name: 'Brasil', iso: 'br' },
+    hostCities: ['Rio de Janeiro', 'São Paulo', 'Belo Horizonte', 'Porto Alegre', 'Recife', 'Curitiba'],
+    dates: '24 de junho a 16 de julho de 1950',
+    teams: 13,
+    matches: 22,
+    goalsTotal: 88,
+    attendance: '1,3 milhão',
+    podium: {
+      champion: 'Uruguai', championIso: 'uy',
+      runnerUp: 'Brasil', runnerUpIso: 'br',
+      thirdPlace: 'Suécia', thirdPlaceIso: 'se',
+      fourthPlace: 'Espanha',
+    },
+    finalScore: 'Uruguai 2×1 Brasil',
+    finalVenue: 'Maracanã, Rio de Janeiro',
+    topScorer: { name: 'Ademir Marques de Menezes', country: 'Brasil', countryIso: 'br', goals: 8 },
+    history: [
+      'Após 12 anos de pausa por causa da Segunda Guerra, a Copa retornou no Brasil — o país construiu o Maracanã especificamente para o evento, com capacidade superior a 200 mil torcedores. O formato foi único na história: o "campeão" sairia de um quadrangular final, sem decisão única.',
+      'O Brasil chegou ao último jogo precisando apenas de um empate contra o Uruguai. Diante de quase 200 mil torcedores no Maracanã, abriu o placar com Friaça aos 47 minutos do segundo tempo. O Uruguai virou para 2×1 com gols de Schiaffino e Alcides Ghiggia, em um silêncio que ficaria conhecido como o "Maracanazo".',
+      'O capitão uruguaio Obdulio Varela ficou imortalizado pela frase pré-jogo: "Os de fora são de pau". A derrota é considerada a maior tragédia esportiva brasileira — homens choraram, alguns torcedores morreram de comoção. O uniforme branco brasileiro foi aposentado para sempre, dando origem à camisa amarela atual.',
+    ],
+    curiosities: [
+      'O Maracanã foi construído especificamente para a Copa, com obras finalizadas dias antes do jogo de abertura.',
+      'Foi a única Copa em que o título foi decidido em quadrangular final, sem partida única.',
+      'A Inglaterra, em sua estreia em Copas, foi humilhada por Estados Unidos por 1×0 — uma das maiores zebras da história.',
+      'Após o "Maracanazo", o Brasil trocou o uniforme branco com gola azul pela camisa amarela com detalhes em verde.',
+      'Alcides Ghiggia, autor do gol decisivo, dizia: "Apenas três pessoas conseguiram fazer silêncio no Maracanã: Frank Sinatra, o Papa João Paulo II e eu".',
+      'A Índia havia se classificado mas desistiu — alegação histórica de que era por terem sido proibidos de jogar descalços (a real foi questão financeira).',
+    ],
+    notableMatch: 'Uruguai 2×1 Brasil — "Maracanazo", 16/07/1950, 173 mil pagantes (estimativa total de 200 mil), gol decisivo de Ghiggia aos 34 do segundo tempo.',
+  },
+
+  {
+    year: 1954,
+    host: { name: 'Suíça', iso: 'ch' },
+    hostCities: ['Berna', 'Basileia', 'Lausanne', 'Zurique', 'Genebra', 'Lugano'],
+    dates: '16 de junho a 4 de julho de 1954',
+    teams: 16,
+    matches: 26,
+    goalsTotal: 140,
+    podium: {
+      champion: 'Alemanha Ocidental', championIso: 'de',
+      runnerUp: 'Hungria', runnerUpIso: 'hu',
+      thirdPlace: 'Áustria', thirdPlaceIso: 'at',
+      fourthPlace: 'Uruguai',
+    },
+    finalScore: 'Alemanha Ocidental 3×2 Hungria',
+    finalVenue: 'Wankdorfstadion, Berna',
+    topScorer: { name: 'Sándor Kocsis', country: 'Hungria', countryIso: 'hu', goals: 11 },
+    history: [
+      'A Copa da Suíça ficou marcada pelo "Milagre de Berna". A Hungria de Ferenc Puskás chegou como super-favorita — vinha invicta há 4 anos, com 32 vitórias seguidas e ouro olímpico em 1952. Já havia derrotado os alemães por 8×3 na fase de grupos.',
+      'Na final, em Berna, sob chuva torrencial, a Hungria abriu 2×0 nos primeiros 8 minutos. Mas a Alemanha Ocidental, com botas de travas removíveis (vantagem na lama), virou para 3×2 com 2 gols de Helmut Rahn — o último aos 6 minutos do segundo tempo. O título alemão foi visto como momento de "reerguimento" após a 2ª Guerra.',
+      'O torneio também ficou famoso pela média recorde de gols: 5,38 por jogo — recorde absoluto até hoje na história das Copas.',
+    ],
+    curiosities: [
+      'Recorde absoluto de gols por jogo: 5,38 — nenhuma outra Copa chegou perto.',
+      'A Hungria fez 27 gols em 5 jogos no torneio, mais ainda perdeu a final.',
+      'Foi a primeira Copa transmitida ao vivo pela televisão.',
+      'Sándor Kocsis ficou conhecido como "Cabeça de Ouro" pelos seus gols de cabeça.',
+      'Alemanha Ocidental foi a primeira nação não-anfitriã a vencer uma Copa fora de casa.',
+      'A invencibilidade da Hungria, encerrada na final, durou 4 anos e 32 jogos seguidos.',
+    ],
+    notableMatch: 'Alemanha Ocidental 3×2 Hungria — "Milagre de Berna", 04/07/1954, virada após estar perdendo de 2×0 nos primeiros 8 minutos.',
+  },
+
+  {
+    year: 1958,
+    host: { name: 'Suécia', iso: 'se' },
+    hostCities: ['Estocolmo', 'Gotemburgo', 'Malmö', 'Norrköping'],
+    dates: '8 de junho a 29 de junho de 1958',
+    teams: 16,
+    matches: 35,
+    goalsTotal: 126,
+    podium: {
+      champion: 'Brasil', championIso: 'br',
+      runnerUp: 'Suécia', runnerUpIso: 'se',
+      thirdPlace: 'França', thirdPlaceIso: 'fr',
+      fourthPlace: 'Alemanha Ocidental',
+    },
+    finalScore: 'Brasil 5×2 Suécia',
+    finalVenue: 'Råsundastadion, Estocolmo',
+    topScorer: { name: 'Just Fontaine', country: 'França', countryIso: 'fr', goals: 13 },
+    history: [
+      'A Copa de 1958 marcou a chegada do Brasil ao topo do mundo — e a apresentação de um adolescente de 17 anos chamado Edson Arantes do Nascimento, conhecido como Pelé. Vavá, Didi, Garrincha, Nilton Santos e Zagallo formavam a base de uma das melhores seleções já vistas.',
+      'Pelé estreou na Copa contra a União Soviética (com Garrincha também titulando pela primeira vez), marcou o gol da vitória nas quartas contra o País de Gales, fez hat-trick na semifinal contra a França e dois na final. Sua atuação foi tão impactante que o rei Gustavo VI da Suécia parabenizou os brasileiros pessoalmente após o jogo.',
+      'O francês Just Fontaine fez história ao marcar 13 gols em apenas 6 jogos — recorde absoluto que perdura até hoje. Nenhum jogador chegou nem perto desse feito em uma única Copa.',
+    ],
+    curiosities: [
+      'Just Fontaine marcou 13 gols em 6 jogos — média de 2,17 por jogo, recorde absoluto inquebrável.',
+      'Pelé tinha 17 anos e 249 dias quando fez seu hat-trick na semi — mais jovem hat-tricker em Copas.',
+      'Foi a primeira Copa em que todas as confederações tiveram representante: Europa, América do Sul, América do Norte, África, Ásia.',
+      'Garrincha estreou-se nas quartas e foi decisivo, junto com Pelé, no caminho ao título.',
+      'A Suécia, com 36 anos sem perder em casa, caiu na final justamente contra o Brasil.',
+      'Foi o primeiro de cinco títulos brasileiros — Brasil é o único país a vencer uma Copa fora do seu continente até 1958.',
+    ],
+    notableMatch: 'Brasil 5×2 Suécia — final em Estocolmo. Pelé fez 2 gols, incluindo o de chapéu sobre o zagueiro Bengt Gustavsson.',
+  },
+
+  {
+    year: 1962,
+    host: { name: 'Chile', iso: 'cl' },
+    hostCities: ['Santiago', 'Viña del Mar', 'Arica', 'Rancagua'],
+    dates: '30 de maio a 17 de junho de 1962',
+    teams: 16,
+    matches: 32,
+    goalsTotal: 89,
+    podium: {
+      champion: 'Brasil', championIso: 'br',
+      runnerUp: 'Tchecoslováquia', runnerUpIso: 'cz',
+      thirdPlace: 'Chile', thirdPlaceIso: 'cl',
+      fourthPlace: 'Iugoslávia',
+    },
+    finalScore: 'Brasil 3×1 Tchecoslováquia',
+    finalVenue: 'Estádio Nacional, Santiago',
+    topScorer: { name: '6 jogadores empatados', country: 'Vários', goals: 4 },
+    history: [
+      'O Chile recebeu a Copa apenas dois anos após o terremoto mais forte já registrado no mundo (magnitude 9,5, em 1960). Carlos Dittborn, presidente da federação chilena, conseguiu manter a sede com a célebre frase: "Porque não temos nada, faremos tudo". Ele morreu antes do início do torneio.',
+      'O Brasil chegou como favorito e bicampeão. Pelé lesionou-se logo no segundo jogo (contra a Tchecoslováquia), e Garrincha assumiu o protagonismo — fez gols decisivos nas quartas (2×0 contra Inglaterra) e nas semis (4×2 contra Chile). Amarildo, substituto de Pelé, brilhou e ganhou o apelido de "Possesso".',
+      'A "Batalha de Santiago" entre Chile e Itália na primeira fase, com socos, pontapés e duas expulsões italianas, ficou famosa como uma das partidas mais violentas da história das Copas. O Brasil venceu o bi com Garrincha, Vavá, Amarildo e Zito brilhando.',
+    ],
+    curiosities: [
+      'O bi brasileiro foi conquistado SEM Pelé, lesionado já no 2º jogo.',
+      'Garrincha foi expulso na semifinal mas, por intervenção política, jogou a final.',
+      'A "Batalha de Santiago" Chile×Itália teve 2 expulsões e o árbitro inglês Ken Aston dizendo que "controlou um campo de batalha".',
+      'Foi a Copa com 6 artilheiros empatados em 4 gols cada — divisão recorde do prêmio.',
+      'A média de gols caiu para 2,78 por jogo, ainda alta mas bem abaixo de 1954.',
+      'Carlos Dittborn, herói da realização do torneio, morreu de ataque cardíaco um mês antes da abertura.',
+    ],
+    notableMatch: 'Brasil 4×2 Chile (semifinal) — Garrincha fez 2 gols e foi expulso. Brasil venceria o bi pouco depois.',
+  },
+
+  {
+    year: 1966,
+    host: { name: 'Inglaterra', iso: 'gb-eng' },
+    hostCities: ['Londres', 'Liverpool', 'Manchester', 'Sheffield', 'Birmingham', 'Sunderland', 'Middlesbrough'],
+    dates: '11 de julho a 30 de julho de 1966',
+    teams: 16,
+    matches: 32,
+    goalsTotal: 89,
+    podium: {
+      champion: 'Inglaterra', championIso: 'gb-eng',
+      runnerUp: 'Alemanha Ocidental', runnerUpIso: 'de',
+      thirdPlace: 'Portugal', thirdPlaceIso: 'pt',
+      fourthPlace: 'União Soviética',
+    },
+    finalScore: 'Inglaterra 4×2 Alemanha Ocidental (prorrogação)',
+    finalVenue: 'Estádio de Wembley, Londres',
+    topScorer: { name: 'Eusébio', country: 'Portugal', countryIso: 'pt', goals: 9 },
+    history: [
+      'A Copa de 1966 levou a coroa para o berço do futebol — 96 anos após a Inglaterra inventar o esporte moderno. Liderada por Bobby Moore (capitão), Bobby Charlton (cérebro) e Geoff Hurst (artilheiro), a seleção inglesa não havia sido nem semifinalista em 4 Copas anteriores.',
+      'A grande estrela individual foi o português Eusébio, "Pantera Negra" nascido em Moçambique. Marcou 9 gols pela seleção portuguesa estreante, incluindo 4 contra a Coreia do Norte (que havia eliminado a Itália na fase de grupos em uma das maiores zebras já vistas). Portugal terminou em 3º lugar.',
+      'A final em Wembley contra a Alemanha Ocidental terminou empatada em 2×2 no tempo regulamentar. Na prorrogação, Geoff Hurst marcou o famoso "gol fantasma" — a bola bateu no travessão e desceu, com dúvida se cruzou a linha. O 4º gol veio com torcedores invadindo o campo nos minutos finais. Hurst se tornou o único jogador a fazer hat-trick em uma final de Copa.',
+    ],
+    curiosities: [
+      'Geoff Hurst é o único jogador a marcar 3 gols em uma final de Copa do Mundo.',
+      'O "gol fantasma" de Hurst foi confirmado como gol pela tecnologia décadas depois — análises divergem até hoje.',
+      'Coreia do Norte eliminou a Itália na fase de grupos, primeira grande zebra asiática.',
+      'A Inglaterra é o único país a vencer uma Copa do Mundo e nunca mais ter chegado a uma final.',
+      'O troféu Jules Rimet foi roubado dias antes do torneio em Londres e encontrado por um cachorro chamado "Pickles" enrolado em jornal sob um arbusto.',
+      'Pelé foi caçado pelos zagueiros no torneio — o Brasil caiu na primeira fase pela última vez na sua história.',
+    ],
+    notableMatch: 'Inglaterra 4×2 Alemanha Ocidental — final 30/07/1966 em Wembley, hat-trick de Geoff Hurst em prorrogação.',
+  },
+
+  {
+    year: 1970,
+    host: { name: 'México', iso: 'mx' },
+    hostCities: ['Cidade do México', 'Guadalajara', 'León', 'Toluca', 'Puebla'],
+    dates: '31 de maio a 21 de junho de 1970',
+    teams: 16,
+    matches: 32,
+    goalsTotal: 95,
+    podium: {
+      champion: 'Brasil', championIso: 'br',
+      runnerUp: 'Itália', runnerUpIso: 'it',
+      thirdPlace: 'Alemanha Ocidental', thirdPlaceIso: 'de',
+      fourthPlace: 'Uruguai',
+    },
+    finalScore: 'Brasil 4×1 Itália',
+    finalVenue: 'Estádio Azteca, Cidade do México',
+    topScorer: { name: 'Gerd Müller', country: 'Alemanha Ocidental', countryIso: 'de', goals: 10 },
+    history: [
+      'A Copa de 1970 é considerada por muitos a mais bonita já disputada — primeira a colorir as TVs do mundo todo. O Brasil chegou com a melhor seleção da história: Pelé, Tostão, Rivelino, Jairzinho, Gérson e Carlos Alberto Torres formaram um esquadrão lendário, com Mário Zagallo no comando.',
+      'O Brasil venceu todos os 6 jogos com média de 3,17 gols por partida. A vitória de 4×1 sobre a Itália na final terminou com o gol mais bonito de coletividade da história das Copas — Carlos Alberto, após troca de passes envolvendo praticamente o time inteiro, recebendo de Pelé e finalizando.',
+      'Foi a 3ª e última Copa de Pelé, que aos 29 anos se tornou o único jogador a vencer 3 Mundiais. O troféu Jules Rimet foi entregue para sempre ao Brasil — pelo regulamento da época, quem vencesse 3 vezes ficaria com o original (que seria roubado em 1983 no Rio e nunca recuperado).',
+    ],
+    curiosities: [
+      'Pelé é o único jogador a vencer 3 Copas do Mundo (1958, 1962, 1970).',
+      'Foi a primeira Copa transmitida ao vivo a cores no mundo todo.',
+      'O troféu Jules Rimet original foi entregue ao Brasil — roubado da CBF em 1983 e nunca recuperado.',
+      'Foi a primeira Copa com substituições e cartões amarelo/vermelho no esquema atual.',
+      'O Estádio Azteca foi inaugurado em 1966 e sediou final pela 1ª vez aqui.',
+      'A altitude de Cidade do México (2.240m) afetou várias seleções — alguns jogos começavam às 12h sob 35°C.',
+    ],
+    notableMatch: 'Brasil 4×1 Itália — final 21/06/1970 no Azteca. Gol de Carlos Alberto encerrando jogada coletiva considerada a melhor da história.',
+  },
+
+  {
+    year: 1974,
+    host: { name: 'Alemanha Ocidental', iso: 'de' },
+    hostCities: ['Munique', 'Berlim', 'Frankfurt', 'Düsseldorf', 'Hamburgo', 'Stuttgart', 'Hanôver', 'Dortmund', 'Gelsenkirchen'],
+    dates: '13 de junho a 7 de julho de 1974',
+    teams: 16,
+    matches: 38,
+    goalsTotal: 97,
+    podium: {
+      champion: 'Alemanha Ocidental', championIso: 'de',
+      runnerUp: 'Holanda', runnerUpIso: 'nl',
+      thirdPlace: 'Polônia', thirdPlaceIso: 'pl',
+      fourthPlace: 'Brasil',
+    },
+    finalScore: 'Alemanha Ocidental 2×1 Holanda',
+    finalVenue: 'Olympiastadion, Munique',
+    topScorer: { name: 'Grzegorz Lato', country: 'Polônia', countryIso: 'pl', goals: 7 },
+    goldenBall: { name: 'Johan Cruyff', country: 'Holanda', countryIso: 'nl' },
+    history: [
+      'A Copa de 1974 apresentou ao mundo o "Futebol Total" da Holanda de Johan Cruyff e do técnico Rinus Michels — sistema revolucionário em que todos os jogadores trocavam de posição, com pressão alta e posse de bola obsessiva. A Holanda fascinou o planeta com vitórias contundentes, eliminando o Brasil bicampeão.',
+      'A final em Munique ficou famosa por ter começado com pênalti aos 90 segundos — Cruyff foi derrubado por Hoeness após puxada do meio-campo, e Neeskens converteu antes que qualquer alemão tocasse na bola. Mas a Alemanha Ocidental, com Beckenbauer no comando e Müller fazendo o gol da virada, conquistou seu segundo título mundial.',
+      'A Holanda ficou eternamente conhecida como a melhor seleção que NUNCA foi campeã. Cruyff levou a Bola de Ouro mesmo na derrota.',
+    ],
+    curiosities: [
+      'O pênalti aos 90 segundos foi o mais rápido em uma final de Copa até hoje.',
+      'A Alemanha Ocidental venceu sem que o time alemão tocasse na bola antes do pênalti contra.',
+      'Cruyff foi o primeiro jogador a vencer a Bola de Ouro (do torneio) em uma final perdida.',
+      'Foi a primeira Copa em que o troféu original era a "FIFA World Cup Trophy" atual (substituiu a Jules Rimet entregue ao Brasil).',
+      'Australia, Haiti e Zaire (atual RD Congo) estrearam — Zaire perdeu 9×0 da Iugoslávia.',
+      'Beckenbauer, capitão alemão, mais tarde também venceria como técnico (1990) — único alemão a fazer essa dobradinha.',
+    ],
+    notableMatch: 'Holanda 2×0 Brasil (semifinal) — eliminou os bicampeões com gols de Neeskens e Cruyff, encerrando o reinado de 1970.',
+  },
+
+  {
+    year: 1978,
+    host: { name: 'Argentina', iso: 'ar' },
+    hostCities: ['Buenos Aires', 'Mar del Plata', 'Mendoza', 'Córdoba', 'Rosario'],
+    dates: '1 de junho a 25 de junho de 1978',
+    teams: 16,
+    matches: 38,
+    goalsTotal: 102,
+    podium: {
+      champion: 'Argentina', championIso: 'ar',
+      runnerUp: 'Holanda', runnerUpIso: 'nl',
+      thirdPlace: 'Brasil', thirdPlaceIso: 'br',
+      fourthPlace: 'Itália',
+    },
+    finalScore: 'Argentina 3×1 Holanda (prorrogação)',
+    finalVenue: 'Estádio Monumental, Buenos Aires',
+    topScorer: { name: 'Mario Kempes', country: 'Argentina', countryIso: 'ar', goals: 6 },
+    goldenBall: { name: 'Mario Kempes', country: 'Argentina', countryIso: 'ar' },
+    history: [
+      'A Copa de 1978 aconteceu sob a sombra da ditadura militar argentina — o regime de Videla usou o evento como propaganda, enquanto opositores políticos eram torturados a poucas quadras dos estádios. Polêmicas marcaram todo o torneio.',
+      'A Argentina precisava vencer o Peru por 4 ou mais gols na fase final para chegar à decisão. O placar foi 6×0 — resultado até hoje questionado, com suspeitas de acordo entre os generais argentinos e peruanos. O craque Cubillas e o goleiro Quiroga (argentino naturalizado) jogaram pelo Peru.',
+      'Mario Kempes, "El Matador", artilheiro com 6 gols e Bola de Ouro, marcou 2 vezes na final contra a Holanda na prorrogação. A Holanda perdia sua segunda final consecutiva sem Cruyff (que se recusou a participar por motivos pessoais e políticos).',
+    ],
+    curiosities: [
+      'A vitória argentina por 6×0 sobre o Peru permanece controversa até hoje, com depoimentos posteriores apontando acordos.',
+      'Johan Cruyff recusou-se a jogar a Copa, motivado tanto por uma tentativa de sequestro quanto por protesto contra a ditadura.',
+      'Foi a primeira Copa com o regulamento atual de pênaltis para decidir empates (mas não usado na final).',
+      'A "chuva de papelzinho" no Monumental virou marca registrada do torneio.',
+      'Foi a última Copa em formato de "pool final" parcial — 4 grupos, depois 2 grupos de semis.',
+      'O técnico argentino César Luis Menotti era um intelectual de esquerda, contraste evidente com a ditadura que o financiou.',
+    ],
+    notableMatch: 'Argentina 6×0 Peru — fase final eliminatória, resultado polêmico que classificou os argentinos sobre o Brasil por saldo de gols.',
+  },
+
+  {
+    year: 1982,
+    host: { name: 'Espanha', iso: 'es' },
+    hostCities: ['Madri', 'Barcelona', 'Sevilha', 'Valência', 'Bilbao', 'Vigo', 'Málaga', 'Zaragoza', 'Alicante', 'Gijón', 'Oviedo', 'A Coruña', 'Elche', 'La Coruña', 'Valladolid'],
+    dates: '13 de junho a 11 de julho de 1982',
+    teams: 24,
+    matches: 52,
+    goalsTotal: 146,
+    podium: {
+      champion: 'Itália', championIso: 'it',
+      runnerUp: 'Alemanha Ocidental', runnerUpIso: 'de',
+      thirdPlace: 'Polônia', thirdPlaceIso: 'pl',
+      fourthPlace: 'França',
+    },
+    finalScore: 'Itália 3×1 Alemanha Ocidental',
+    finalVenue: 'Santiago Bernabéu, Madri',
+    topScorer: { name: 'Paolo Rossi', country: 'Itália', countryIso: 'it', goals: 6 },
+    goldenBall: { name: 'Paolo Rossi', country: 'Itália', countryIso: 'it' },
+    history: [
+      'A primeira Copa com 24 seleções foi disputada em 17 cidades espanholas. O torneio ficou marcado por episódios polêmicos: o "Vergonhoso de Gijón" (Alemanha Ocidental e Áustria combinaram um 1×0 que classificava ambas e eliminava a Argélia) e a "Tragédia de Sarriá" — a derrota brasileira para a Itália.',
+      'O Brasil de Telê Santana, com Sócrates, Zico, Falcão, Cerezo e Júnior, encantava o mundo com futebol-arte. Bastava um empate contra a Itália para avançar. Paolo Rossi, recém-saído de banimento por escândalo de apostas, fez hat-trick na vitória italiana por 3×2 e enterrou o sonho brasileiro em uma das maiores tragédias do nosso futebol.',
+      'A Itália de Bearzot conquistou o tricampeonato com Paolo Rossi artilheiro e Bola de Ouro. O presidente Sandro Pertini, então com 86 anos, comemorou com tanto entusiasmo na tribuna que sua imagem virou ícone da história italiana.',
+    ],
+    curiosities: [
+      'O "Vergonhoso de Gijón" levou a FIFA a obrigar que os jogos finais de cada grupo fossem disputados simultaneamente.',
+      'Paolo Rossi havia sido banido 2 anos por escândalo de apostas — voltou semanas antes do torneio e venceu a Bola de Ouro.',
+      'Foi a primeira Copa com 24 times — formato com 6 grupos de 4, depois 4 grupos de 3 na 2ª fase.',
+      'A "Tragédia do Sarriá" (Brasil 2×3 Itália) é considerada o jogo mais doloroso da geração de 1982 brasileira.',
+      'Diego Maradona estreou em Copas aos 21 anos — Argentina caiu na 2ª fase.',
+      'Camarões empatou seus 3 jogos na fase de grupos e foi eliminada por saldo de gols, sem perder nenhum jogo.',
+    ],
+    notableMatch: 'Itália 3×2 Brasil — "Tragédia do Sarriá", 05/07/1982 em Barcelona, hat-trick de Paolo Rossi eliminou a "Seleção do Telê".',
+  },
+
+  {
+    year: 1986,
+    host: { name: 'México', iso: 'mx' },
+    hostCities: ['Cidade do México', 'Guadalajara', 'Monterrey', 'León', 'Puebla', 'Toluca', 'Querétaro', 'Irapuato', 'Nezahualcóyotl'],
+    dates: '31 de maio a 29 de junho de 1986',
+    teams: 24,
+    matches: 52,
+    goalsTotal: 132,
+    podium: {
+      champion: 'Argentina', championIso: 'ar',
+      runnerUp: 'Alemanha Ocidental', runnerUpIso: 'de',
+      thirdPlace: 'França', thirdPlaceIso: 'fr',
+      fourthPlace: 'Bélgica',
+    },
+    finalScore: 'Argentina 3×2 Alemanha Ocidental',
+    finalVenue: 'Estádio Azteca, Cidade do México',
+    topScorer: { name: 'Gary Lineker', country: 'Inglaterra', countryIso: 'gb-eng', goals: 6 },
+    goldenBall: { name: 'Diego Maradona', country: 'Argentina', countryIso: 'ar' },
+    history: [
+      'A Copa de 1986 foi o palco da consagração de Diego Armando Maradona. O México substituiu a Colômbia (que desistiu por questões econômicas) e tornou-se o primeiro país a sediar duas Copas. Maradona, então no auge aos 25 anos, conduziu a Argentina sozinho ao título.',
+      'Nas quartas de final contra a Inglaterra, Maradona protagonizou em apenas 4 minutos os 2 gols mais célebres da história das Copas: a "Mão de Deus" (gol irregular com a mão, não notado pelo árbitro) e o "Gol do Século" — Maradona dribla 5 ingleses desde o meio-campo até finalizar. A Argentina venceu por 2×1 e seguiu rumo ao título.',
+      'A final contra a Alemanha Ocidental no Azteca terminou 3×2. Maradona, mesmo marcado por dois zagueiros, deu o passe para Burruchaga marcar o gol da vitória nos últimos minutos. Foi a 2ª estrela da seleção argentina.',
+    ],
+    curiosities: [
+      'Maradona fez 5 gols e 5 assistências no torneio — números absurdos para a época.',
+      'A "Mão de Deus" só foi confessada por Maradona décadas depois.',
+      'O "Gol do Século" envolveu Maradona driblando 5 jogadores ingleses (incluindo o goleiro) numa corrida de 60 metros.',
+      'Foi a primeira Copa com formato de 16 avos de final (oitavas) — antes era pool/quartas direto.',
+      'Maradona é o único jogador a vencer Bola de Ouro do torneio em 1986 com seleção sul-americana.',
+      'O México sediou a Copa duas vezes em 16 anos (1970 e 1986) — feito que se repetirá em 2026 com 3 países.',
+    ],
+    notableMatch: 'Argentina 2×1 Inglaterra (quartas) — "Mão de Deus" e "Gol do Século" de Maradona em apenas 4 minutos.',
+  },
+
+  {
+    year: 1990,
+    host: { name: 'Itália', iso: 'it' },
+    hostCities: ['Roma', 'Milão', 'Nápoles', 'Turim', 'Bari', 'Bolonha', 'Florença', 'Gênova', 'Palermo', 'Verona', 'Cagliari', 'Údine'],
+    dates: '8 de junho a 8 de julho de 1990',
+    teams: 24,
+    matches: 52,
+    goalsTotal: 115,
+    podium: {
+      champion: 'Alemanha Ocidental', championIso: 'de',
+      runnerUp: 'Argentina', runnerUpIso: 'ar',
+      thirdPlace: 'Itália', thirdPlaceIso: 'it',
+      fourthPlace: 'Inglaterra',
+    },
+    finalScore: 'Alemanha Ocidental 1×0 Argentina',
+    finalVenue: 'Estádio Olímpico, Roma',
+    topScorer: { name: 'Salvatore Schillaci', country: 'Itália', countryIso: 'it', goals: 6 },
+    goldenBall: { name: 'Salvatore Schillaci', country: 'Itália', countryIso: 'it' },
+    history: [
+      'A "Itália 90" entrou para a história mais pelos jogos defensivos e baixa média de gols (2,21 por jogo, recorde negativo até então) do que pelo futebol vistoso. A trilha sonora "Notti Magiche" virou icônica.',
+      'A Camarões fez história ao se tornar a primeira seleção africana a chegar às quartas de final, eliminando a Argentina campeã na abertura (1×0) e depois vencendo a Romênia. Roger Milla, com 38 anos, virou ícone com sua dança característica nos gols.',
+      'A Alemanha Ocidental conquistou seu 3º título com gol de Andreas Brehme nos minutos finais, em pênalti polêmico contra Argentina. Maradona, marcado fortemente, chorou no fim do jogo. Foi a última Copa da Alemanha como "Ocidental" — antes da reunificação.',
+    ],
+    curiosities: [
+      'Camarões eliminou a Argentina campeã na abertura — primeira vitória de seleção africana sobre uma campeã mundial.',
+      'Roger Milla, com 38 anos, virou meme da época com sua dança no córner após cada gol.',
+      'A Itália foi a 1ª anfitriã com um artilheiro do torneio (Schillaci, 6 gols) — apelidado de "Toto".',
+      'A média de 2,21 gols por jogo é a mais baixa de qualquer Copa.',
+      'Foi a primeira aparição de Maradona em final perdida — chorou na cerimônia.',
+      'O recorde de cartões vermelhos em uma Copa: 16 expulsões.',
+    ],
+    notableMatch: 'Camarões 2×1 Argentina — abertura 08/06/1990 em Milão, vitória histórica africana contra os campeões em exercício.',
+  },
+
+  {
+    year: 1994,
+    host: { name: 'Estados Unidos', iso: 'us' },
+    hostCities: ['Pasadena', 'Stanford', 'Foxborough', 'East Rutherford', 'Detroit', 'Chicago', 'Dallas', 'Orlando', 'Washington'],
+    dates: '17 de junho a 17 de julho de 1994',
+    teams: 24,
+    matches: 52,
+    goalsTotal: 141,
+    podium: {
+      champion: 'Brasil', championIso: 'br',
+      runnerUp: 'Itália', runnerUpIso: 'it',
+      thirdPlace: 'Suécia', thirdPlaceIso: 'se',
+      fourthPlace: 'Bulgária',
+    },
+    finalScore: 'Brasil 0×0 Itália (3×2 nos pênaltis)',
+    finalVenue: 'Rose Bowl, Pasadena',
+    topScorer: { name: 'Hristo Stoichkov / Oleg Salenko', country: 'Bulgária / Rússia', goals: 6 },
+    goldenBall: { name: 'Romário', country: 'Brasil', countryIso: 'br' },
+    history: [
+      'A Copa nos Estados Unidos quebrou recordes de público (3,6 milhões de espectadores) e levou o futebol ao maior mercado televisivo do mundo. Foi também o tetra brasileiro, após 24 anos sem título.',
+      'O Brasil de Carlos Alberto Parreira foi liderado pelo "Baixinho" Romário (que retornou após 2 anos de exílio na seleção) e Bebeto. A dupla Ro-Be foi imparável, com Romário fazendo 5 gols e ganhando a Bola de Ouro. A final contra a Itália em Pasadena terminou 0×0 e foi decidida nos pênaltis — Roberto Baggio bateu o último por cima e o Brasil conquistou o tetra.',
+      'A Copa também ficou marcada por tragédias: Maradona testou positivo para doping (efedrina) e foi eliminado; o zagueiro colombiano Andrés Escobar foi assassinado em Medellín dias após marcar gol contra os EUA, em ataque relacionado às apostas mafiosas.',
+    ],
+    curiosities: [
+      'Foi a primeira final de Copa decidida nos pênaltis — Baggio chutou para fora.',
+      'Roberto Baggio, "Rabo de Cavalo Divino", carregou a Itália na campanha e errou o pênalti decisivo.',
+      'Oleg Salenko fez 5 gols em UM ÚNICO jogo (Rússia 6×1 Camarões) — recorde absoluto.',
+      'Maradona positivou para doping e foi expulso da Copa após 2 jogos brilhantes.',
+      'Andrés Escobar foi assassinado dias após retornar à Colômbia, episódio mais trágico do esporte.',
+      'A Rose Bowl, em Pasadena, ainda é o maior público de uma final pós-1950 (94 mil pagantes).',
+      'O tetra ocorreu 24 anos após o tri em 1970 — o maior intervalo entre títulos brasileiros.',
+    ],
+    notableMatch: 'Brasil 0×0 Itália (3×2 pênaltis) — final 17/07/1994 em Pasadena. Baggio chutou por cima do gol no último pênalti.',
+  },
+
+  {
+    year: 1998,
+    host: { name: 'França', iso: 'fr' },
+    hostCities: ['Paris (Saint-Denis)', 'Marselha', 'Lyon', 'Bordeaux', 'Nantes', 'Saint-Étienne', 'Toulouse', 'Lens', 'Montpellier', 'Nice'],
+    dates: '10 de junho a 12 de julho de 1998',
+    teams: 32,
+    matches: 64,
+    goalsTotal: 171,
+    podium: {
+      champion: 'França', championIso: 'fr',
+      runnerUp: 'Brasil', runnerUpIso: 'br',
+      thirdPlace: 'Croácia', thirdPlaceIso: 'hr',
+      fourthPlace: 'Holanda',
+    },
+    finalScore: 'França 3×0 Brasil',
+    finalVenue: 'Stade de France, Saint-Denis',
+    topScorer: { name: 'Davor Šuker', country: 'Croácia', countryIso: 'hr', goals: 6 },
+    goldenBall: { name: 'Ronaldo', country: 'Brasil', countryIso: 'br' },
+    history: [
+      'A primeira Copa com 32 seleções foi disputada na França, anfitriã que inaugurou o Stade de France para o evento. A Croácia fez sua estreia em Copas e foi até as semifinais — Davor Šuker artilheiro com 6 gols.',
+      'A final em Saint-Denis ficou marcada por mistério eterno: Ronaldo Fenômeno, artilheiro nato, sofreu uma "convulsão" misteriosa horas antes da final. Sua escalação inicial foi cancelada, depois reincorporada minutos antes do início. Atuou abaixo do nível, e o Brasil perdeu de 3×0 — com 2 gols de cabeça de Zinédine Zidane e um de Petit nos minutos finais.',
+      'A França de Aimé Jacquet conquistou o título inédito com Zidane elevado ao status de herói nacional. Sua imagem foi projetada no Arco do Triunfo durante as celebrações em Paris. Foi também a primeira vez que uma seleção multicultural (com Vieira, Karembeu, Thuram, Henry) representava a "nova França".',
+    ],
+    curiosities: [
+      'Foi a primeira Copa com 32 seleções — formato mantido até 2022.',
+      'O episódio da "convulsão de Ronaldo" antes da final nunca foi totalmente esclarecido.',
+      'Zidane fez 2 gols de cabeça na final — feito raro para meio-campistas.',
+      'A Croácia, em sua estreia em Copas, ficou em 3º lugar — melhor estreia da história.',
+      'Foi a primeira vez que a final foi disputada em estádio inaugurado para a Copa (Stade de France).',
+      'Foi a 1ª Copa com cartão "Gol de Ouro" (eliminado no jogo seguinte na prorrogação).',
+    ],
+    notableMatch: 'França 3×0 Brasil — final 12/07/1998. Zidane fez 2 gols de cabeça; Ronaldo atuou abaixo após convulsão pré-jogo.',
+  },
+
+  {
+    year: 2002,
+    host: { name: 'Coreia do Sul / Japão', iso: 'jp' },
+    hostCities: ['Yokohama', 'Saitama', 'Osaka', 'Niigata', 'Kobe', 'Sapporo', 'Seoul', 'Daegu', 'Busan', 'Suwon', 'Daejeon', 'Jeonju', 'Gwangju', 'Ulsan'],
+    dates: '31 de maio a 30 de junho de 2002',
+    teams: 32,
+    matches: 64,
+    goalsTotal: 161,
+    podium: {
+      champion: 'Brasil', championIso: 'br',
+      runnerUp: 'Alemanha', runnerUpIso: 'de',
+      thirdPlace: 'Turquia', thirdPlaceIso: 'tr',
+      fourthPlace: 'Coreia do Sul',
+    },
+    finalScore: 'Brasil 2×0 Alemanha',
+    finalVenue: 'International Stadium, Yokohama',
+    topScorer: { name: 'Ronaldo Fenômeno', country: 'Brasil', countryIso: 'br', goals: 8 },
+    goldenBall: { name: 'Oliver Kahn', country: 'Alemanha', countryIso: 'de' },
+    history: [
+      'A primeira Copa fora de Europa e Américas foi co-sediada por Coreia do Sul e Japão — também a primeira no continente asiático. A logística mista por dois países deu à FIFA muitos desafios e nunca mais se repetiu (até 2026, com 3 países em 1 continente).',
+      'O Brasil de Ronaldo, Rivaldo e Ronaldinho ("dos Rs") chegou após uma campanha turbulenta nas eliminatórias e arrasou com 7 vitórias em 7 jogos. Ronaldo Fenômeno, com seu cabelo "cascão" característico, foi artilheiro com 8 gols e marcou os 2 gols da final contra a Alemanha de Oliver Kahn — o primeiro deles após erro raro do goleiro alemão.',
+      'A Coreia do Sul, anfitriã, surpreendeu ao chegar ao 4º lugar — eliminando Itália e Espanha em jogos polêmicos com decisões questionáveis da arbitragem. Senegal fez sua estreia em Copas e bateu a campeã França por 1×0 na abertura — outra das maiores zebras da história.',
+    ],
+    curiosities: [
+      'Primeira Copa em dois países e primeira na Ásia.',
+      'Ronaldo Fenômeno fez 8 gols, total que ainda era recorde até Kane igualar em 2018.',
+      'A Coreia do Sul eliminou Itália e Espanha em jogos com erros graves de arbitragem amplamente documentados.',
+      'O cabelo "cascão" do Ronaldo virou meme cultural — adotado por crianças do Brasil inteiro.',
+      'Senegal estreou em Copas batendo a campeã França em sua primeira partida.',
+      'Foi a primeira final em que o goleiro adversário (Oliver Kahn) ganhou a Bola de Ouro.',
+      'Ronaldinho foi expulso na vitória sobre a Inglaterra após "matar" Beckham com gol de falta de longa distância.',
+    ],
+    notableMatch: 'Brasil 2×1 Inglaterra (quartas) — gol de falta de Ronaldinho de mais de 35m, encobrindo o goleiro David Seaman.',
+  },
+
+  {
+    year: 2006,
+    host: { name: 'Alemanha', iso: 'de' },
+    hostCities: ['Berlim', 'Munique', 'Frankfurt', 'Dortmund', 'Hamburgo', 'Stuttgart', 'Hanôver', 'Gelsenkirchen', 'Kaiserslautern', 'Nuremberg', 'Colônia', 'Leipzig'],
+    dates: '9 de junho a 9 de julho de 2006',
+    teams: 32,
+    matches: 64,
+    goalsTotal: 147,
+    podium: {
+      champion: 'Itália', championIso: 'it',
+      runnerUp: 'França', runnerUpIso: 'fr',
+      thirdPlace: 'Alemanha', thirdPlaceIso: 'de',
+      fourthPlace: 'Portugal',
+    },
+    finalScore: 'Itália 1×1 França (5×3 nos pênaltis)',
+    finalVenue: 'Olympiastadion, Berlim',
+    topScorer: { name: 'Miroslav Klose', country: 'Alemanha', countryIso: 'de', goals: 5 },
+    goldenBall: { name: 'Zinédine Zidane', country: 'França', countryIso: 'fr' },
+    history: [
+      'A "Sommermärchen" (Conto de Verão) na Alemanha reunificada virou um símbolo de festa. O país recebeu a Copa com hospitalidade exemplar, e a seleção alemã, jovem e ofensiva sob Jürgen Klinsmann, encantou ao chegar ao 3º lugar.',
+      'A Itália de Marcello Lippi venceu a final em Berlim contra a França nos pênaltis. O jogo entrou para a história pela cabeçada de Zinédine Zidane no zagueiro Marco Materazzi, na prorrogação — o francês foi expulso em sua despedida do futebol após Materazzi proferir um insulto à sua família. Mesmo expulso, Zidane levou a Bola de Ouro do torneio.',
+      'A Itália conquistou o tetracampeonato (4º título) — empatando com a Alemanha. Foi a primeira final de Copa decidida nos pênaltis em que ambas seleções já haviam sido campeãs.',
+    ],
+    curiosities: [
+      'A cabeçada de Zidane em Materazzi virou icônica — escultura no Catar, até hoje exibida.',
+      'Zidane foi o primeiro jogador expulso em uma final de Copa, e ainda assim levou a Bola de Ouro.',
+      'Foi o último jogo da carreira de Zidane — aposentou-se imediatamente após.',
+      'Cristiano Ronaldo (Portugal) e Lionel Messi (Argentina) jogaram suas primeiras Copas em 2006.',
+      'A Alemanha como anfitriã estabeleceu o "Public Viewing" — telões públicos para milhares de pessoas, prática que se espalhou.',
+      'Klose, artilheiro, começava sua jornada para o recorde de gols em Copas (que viria em 2014).',
+    ],
+    notableMatch: 'Itália 1×1 França (5×3 pênaltis) — final 09/07/2006 em Berlim. Cabeçada de Zidane em Materazzi marca despedida.',
+  },
+
+  {
+    year: 2010,
+    host: { name: 'África do Sul', iso: 'za' },
+    hostCities: ['Joanesburgo', 'Cidade do Cabo', 'Durban', 'Pretória', 'Port Elizabeth', 'Bloemfontein', 'Polokwane', 'Rustenburg', 'Nelspruit'],
+    dates: '11 de junho a 11 de julho de 2010',
+    teams: 32,
+    matches: 64,
+    goalsTotal: 145,
+    podium: {
+      champion: 'Espanha', championIso: 'es',
+      runnerUp: 'Holanda', runnerUpIso: 'nl',
+      thirdPlace: 'Alemanha', thirdPlaceIso: 'de',
+      fourthPlace: 'Uruguai',
+    },
+    finalScore: 'Espanha 1×0 Holanda (prorrogação)',
+    finalVenue: 'Soccer City, Joanesburgo',
+    topScorer: { name: '4 jogadores empatados', country: 'Vários', goals: 5 },
+    goldenBall: { name: 'Diego Forlán', country: 'Uruguai', countryIso: 'uy' },
+    history: [
+      'A primeira Copa em solo africano foi um marco histórico — após décadas pedindo, o continente finalmente sediou o torneio. Mandela, com 91 anos, fez aparição emocionada na cerimônia de encerramento. A trilha sonora "Waka Waka" da Shakira virou um hino global.',
+      'A Espanha, sob Vicente del Bosque, chegou após vencer a Eurocopa de 2008 com seu "tiki-taka" — futebol baseado em posse e passes curtos, ditado por Xavi e Iniesta. Mesmo perdendo a estreia para a Suíça (1×0), venceu os 6 jogos seguintes — todos por 1×0 a partir das oitavas.',
+      'A final em Joanesburgo foi um jogo violento, com a Holanda usando faltas duras para tentar parar o Espanha. Andrés Iniesta marcou o gol decisivo aos 116 minutos da prorrogação, conquistando o primeiro título mundial da Espanha. Diego Forlán, do Uruguai (4º lugar), levou a Bola de Ouro.',
+    ],
+    curiosities: [
+      'Foi a primeira Copa em África e a primeira em que uma seleção europeia ganhou fora da Europa.',
+      'A Espanha foi a primeira seleção a vencer uma Copa após perder o jogo de estreia.',
+      'O som das vuvuzelas (cornetas) virou marca registrada — e fonte de reclamações mundiais.',
+      'Iker Casillas tornou-se o primeiro goleiro a levantar a taça como capitão sem ter sofrido gol em mata-mata.',
+      'A Itália, atual campeã, e a França, vice, caíram na fase de grupos sem vencer um jogo cada.',
+      'Foi a primeira final em que um time sofreu 9 cartões amarelos (Holanda).',
+      'O polvo "Paul" virou celebridade internacional ao "prever" 8 jogos corretamente.',
+    ],
+    notableMatch: 'Espanha 1×0 Holanda — final 11/07/2010 em Joanesburgo, gol de Iniesta aos 116 minutos da prorrogação.',
+  },
+
+  {
+    year: 2014,
+    host: { name: 'Brasil', iso: 'br' },
+    hostCities: ['Rio de Janeiro', 'São Paulo', 'Brasília', 'Belo Horizonte', 'Salvador', 'Fortaleza', 'Recife', 'Porto Alegre', 'Curitiba', 'Cuiabá', 'Manaus', 'Natal'],
+    dates: '12 de junho a 13 de julho de 2014',
+    teams: 32,
+    matches: 64,
+    goalsTotal: 171,
+    podium: {
+      champion: 'Alemanha', championIso: 'de',
+      runnerUp: 'Argentina', runnerUpIso: 'ar',
+      thirdPlace: 'Holanda', thirdPlaceIso: 'nl',
+      fourthPlace: 'Brasil',
+    },
+    finalScore: 'Alemanha 1×0 Argentina (prorrogação)',
+    finalVenue: 'Maracanã, Rio de Janeiro',
+    topScorer: { name: 'James Rodríguez', country: 'Colômbia', countryIso: 'co', goals: 6 },
+    goldenBall: { name: 'Lionel Messi', country: 'Argentina', countryIso: 'ar' },
+    history: [
+      'A Copa de 2014 retornou ao Brasil 64 anos após o "Maracanazo". Foi marcada por protestos populares contra os altos gastos públicos com estádios em meio a serviços precários, mas dentro de campo entregou um espetáculo com 2,67 gols por jogo (média alta).',
+      'Em uma das maiores tragédias esportivas brasileiras, a "Seleção Canarinho" foi humilhada em casa pela Alemanha por 7×1 na semifinal em Belo Horizonte — o "Mineirazo". Os alemães marcaram 5 gols em apenas 6 minutos do primeiro tempo. Klose marcou seu 16º gol em Copas, recorde absoluto, superando Ronaldo Fenômeno.',
+      'A Alemanha conquistou seu 4º título derrotando a Argentina de Messi por 1×0 na prorrogação, com gol de Mario Götze aos 113 minutos. Foi a primeira seleção europeia a vencer uma Copa nas Américas. Messi, mesmo perdendo, levou a Bola de Ouro do torneio em decisão polêmica.',
+    ],
+    curiosities: [
+      'O "Mineirazo" 7×1 é a maior derrota brasileira em Copas e maior goleada em uma semifinal mundial.',
+      'Klose superou o recorde de gols de Ronaldo (15 → 16) em Copas. Recorde mantido até hoje.',
+      'James Rodríguez (Colômbia) marcou em 5 jogos consecutivos e fez o gol mais bonito do torneio: voleio contra o Uruguai.',
+      'Messi levou a Bola de Ouro mesmo na derrota — decisão considerada a mais polêmica da FIFA.',
+      'Foi a primeira final em prorrogação desde 1994.',
+      'A Espanha caiu na fase de grupos defendendo o título — a primeira nação a fazer isso em 34 anos.',
+      'A Costa Rica chegou às quartas — melhor campanha centro-americana da história.',
+      'Foi a primeira Copa com tecnologia da linha do gol em todos os jogos.',
+    ],
+    notableMatch: 'Alemanha 7×1 Brasil — semifinal 08/07/2014 no Mineirão. Apelidada "Mineirazo", maior trauma esportivo brasileiro.',
+  },
+
+  {
+    year: 2018,
+    host: { name: 'Rússia', iso: 'ru' },
+    hostCities: ['Moscou', 'São Petersburgo', 'Kazan', 'Sochi', 'Nizhny Novgorod', 'Rostov-on-Don', 'Samara', 'Volgogrado', 'Saransk', 'Kaliningrado', 'Ekaterinburgo'],
+    dates: '14 de junho a 15 de julho de 2018',
+    teams: 32,
+    matches: 64,
+    goalsTotal: 169,
+    podium: {
+      champion: 'França', championIso: 'fr',
+      runnerUp: 'Croácia', runnerUpIso: 'hr',
+      thirdPlace: 'Bélgica', thirdPlaceIso: 'be',
+      fourthPlace: 'Inglaterra',
+    },
+    finalScore: 'França 4×2 Croácia',
+    finalVenue: 'Estádio Lujniki, Moscou',
+    topScorer: { name: 'Harry Kane', country: 'Inglaterra', countryIso: 'gb-eng', goals: 6 },
+    goldenBall: { name: 'Luka Modrić', country: 'Croácia', countryIso: 'hr' },
+    bestYoungPlayer: { name: 'Kylian Mbappé', country: 'França', countryIso: 'fr' },
+    history: [
+      'A Copa na Rússia foi marcada pela introdução do VAR (árbitro de vídeo) — pela primeira vez na história, decisões podiam ser revisadas em vídeo. Foi também a 1ª Copa em país do leste europeu, e ofereceu uma das melhores médias de gols recente: 2,64 por jogo.',
+      'A França de Didier Deschamps, com Pogba, Griezmann, Kanté e o jovem Mbappé (19 anos), conquistou seu 2º título. A final contra a Croácia em Moscou foi a mais aberta em décadas — terminou 4×2, com Mbappé se tornando o jogador mais jovem a marcar em uma final desde Pelé em 1958.',
+      'A Croácia, com apenas 4 milhões de habitantes, fez história ao chegar à primeira final de sua história. Luka Modrić levou a Bola de Ouro, quebrando o domínio Messi-Ronaldo de 10 anos no prêmio individual. A Inglaterra, surpreendentemente, fez 4º lugar.',
+    ],
+    curiosities: [
+      'Primeira Copa com VAR — alterou várias decisões críticas.',
+      'Mbappé tornou-se o jogador mais jovem a marcar em uma final desde Pelé (1958).',
+      'A Croácia, com 4 milhões de habitantes, foi a finalista menos populosa desde Uruguai 1950.',
+      'Luka Modrić quebrou o domínio Messi/CR7 da Bola de Ouro do mundial — eles haviam vencido 10 anos seguidos.',
+      'Alemanha, atual campeã, caiu na fase de grupos — humilhada por Coreia do Sul (2×0) na rodada final.',
+      'Foi a Copa com mais gols contra (12) — VAR detalhou várias decisões.',
+      'Harry Kane levou a Chuteira de Ouro com 6 gols, sendo metade deles cobranças de pênalti.',
+    ],
+    notableMatch: 'França 4×2 Croácia — final 15/07/2018 em Moscou, jogo aberto e com 6 gols, raro nas finais modernas.',
+  },
+
+  {
+    year: 2022,
+    host: { name: 'Catar', iso: 'qa' },
+    hostCities: ['Doha', 'Lusail', 'Al Khor', 'Al Wakrah', 'Al Rayyan'],
+    dates: '20 de novembro a 18 de dezembro de 2022',
+    teams: 32,
+    matches: 64,
+    goalsTotal: 172,
+    podium: {
+      champion: 'Argentina', championIso: 'ar',
+      runnerUp: 'França', runnerUpIso: 'fr',
+      thirdPlace: 'Croácia', thirdPlaceIso: 'hr',
+      fourthPlace: 'Marrocos',
+    },
+    finalScore: 'Argentina 3×3 França (4×2 nos pênaltis)',
+    finalVenue: 'Estádio Lusail, Lusail',
+    topScorer: { name: 'Kylian Mbappé', country: 'França', countryIso: 'fr', goals: 8 },
+    goldenBall: { name: 'Lionel Messi', country: 'Argentina', countryIso: 'ar' },
+    bestYoungPlayer: { name: 'Enzo Fernández', country: 'Argentina', countryIso: 'ar' },
+    history: [
+      'A primeira Copa em país árabe e do Oriente Médio, e a primeira disputada em novembro/dezembro (por causa do calor extremo do verão catariano). Investimento estimado em US$ 220 bilhões — a Copa mais cara da história.',
+      'A Argentina de Lionel Messi, em sua 5ª Copa aos 35 anos, finalmente conquistou o título mundial após 36 anos de seca argentina. A campanha começou com uma derrota chocante para a Arábia Saudita por 2×1 na estreia, mas a partir daí a Albiceleste venceu todos os 6 jogos seguintes — incluindo a final mais dramática da história em uma virada épica.',
+      'A final em Lusail terminou 3×3 — Messi e Di María marcaram aos 23 e 36 da etapa inicial, Mbappé empatou em 2 minutos no 2º tempo (80 e 81), Messi recolocou Argentina à frente na prorrogação, Mbappé completou hat-trick aos 118 (de pênalti). Nos pênaltis, Emiliano Martínez defendeu duas cobranças e a Argentina conquistou seu 3º título. Marrocos, primeira seleção africana a chegar à semifinal, ficou em 4º lugar — feito histórico.',
+    ],
+    curiosities: [
+      'Primeira Copa em país árabe, primeira no Oriente Médio, primeira em novembro/dezembro.',
+      'Messi finalmente venceu o Mundial após 5 tentativas — a maioria dos analistas considerou a "redenção" mais aguardada do esporte.',
+      'Marrocos chegou à semifinal — primeira seleção africana e árabe a fazer isso na história.',
+      'Mbappé fez hat-trick na final, primeiro feito desde Geoff Hurst em 1966.',
+      'Argentina abriu o torneio perdendo de 2×1 para Arábia Saudita — uma das maiores zebras da história.',
+      'A "bola dourada" final teve mais gols (6) do que qualquer outra desde 1966.',
+      'Investimento estimado de US$ 220 bilhões — mais que todas as Copas anteriores juntas.',
+      'Foi a Copa com a primeira árbitra mulher (Stéphanie Frappart, francesa) — apitou Alemanha×Costa Rica.',
+    ],
+    notableMatch: 'Argentina 3×3 França (4×2 pênaltis) — final 18/12/2022 em Lusail. Considerada a final mais dramática da história moderna.',
+  },
+
+  {
+    year: 2026,
+    host: { name: 'EUA · México · Canadá', iso: 'us' },
+    hostCities: ['Nova York', 'Los Angeles', 'Cidade do México', 'Toronto', 'Vancouver', 'Atlanta', 'Dallas', 'Houston', 'Filadélfia', 'Boston', 'Kansas City', 'Miami', 'Seattle', 'Guadalajara', 'Monterrey', 'San Francisco'],
+    dates: '11 de junho a 19 de julho de 2026',
+    teams: 48,
+    matches: 104,
+    upcoming: true,
+    podium: {
+      champion: 'A definir', championIso: '',
+      runnerUp: 'A definir',
+      thirdPlace: 'A definir',
+    },
+    finalScore: 'A definir',
+    finalVenue: 'MetLife Stadium, East Rutherford (Nova York)',
+    topScorer: { name: 'A definir', country: '' },
+    history: [
+      'A 23ª Copa do Mundo será a primeira com 48 seleções, expandindo das tradicionais 32. Será também a primeira disputada em três países — Estados Unidos, México e Canadá — abrangendo 16 cidades. O México sediará pela 3ª vez, feito inédito na história.',
+      'Com 104 jogos (vs 64 anteriormente), a fase de grupos terá 12 grupos de 4 seleções, com os 2 primeiros + 8 melhores 3º colocados se classificando para a nova fase de 32 avos de final. A duração total será de 39 dias.',
+      'O Estádio Azteca, na Cidade do México, fará história ao sediar partidas de Copa pela 3ª vez (após 1970 e 1986). A final acontecerá no MetLife Stadium, na área metropolitana de Nova York. Estima-se receita superior a US$ 11 bilhões — a Copa mais lucrativa da história.',
+    ],
+    curiosities: [
+      'Primeira Copa com 48 seleções (vs 32 das edições anteriores).',
+      'Primeira Copa em 3 países — antes só houve a co-sediada por Coreia/Japão em 2002.',
+      'México será o primeiro país a sediar 3 Copas do Mundo (1970, 1986, 2026).',
+      'Estádio Azteca será o primeiro a sediar jogos de 3 Copas do Mundo.',
+      'Total de 104 jogos — 40 a mais do que nas Copas anteriores com 32 seleções.',
+      'A receita estimada é de US$ 11 bilhões, recorde absoluto.',
+      'A final acontecerá no MetLife, casa de New York Giants e New York Jets (NFL).',
+    ],
+    notableMatch: 'Estádio Azteca abrirá a Copa em 11/06/2026 com México como anfitrião — terceira vez que o estádio recebe um jogo de abertura.',
+  },
+];
+
+export const getWorldCupByYear = (year: number): WorldCup | undefined =>
+  worldCups.find((c) => c.year === year);
+
+export const worldCupsByDecade = (): Record<string, WorldCup[]> => {
+  const decades: Record<string, WorldCup[]> = {};
+  for (const cup of worldCups) {
+    const decade = `${Math.floor(cup.year / 10) * 10}s`;
+    if (!decades[decade]) decades[decade] = [];
+    decades[decade].push(cup);
+  }
+  return decades;
+};

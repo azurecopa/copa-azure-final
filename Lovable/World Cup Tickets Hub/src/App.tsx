@@ -29,6 +29,8 @@ const PaymentConfirmation = lazy(() => import("./pages/PaymentConfirmation"));
 const Profile = lazy(() => import("./pages/Profile"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const TicketVerify = lazy(() => import("./pages/TicketVerify"));
+const WorldCupHistory = lazy(() => import("./pages/WorldCupHistory"));
+const WorldCupDetail = lazy(() => import("./pages/WorldCupDetail"));
 
 // Admin pages: bundle separado, só carrega para admins.
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
@@ -88,6 +90,8 @@ const App = () => (
                 <Route path="/groups" element={<Layout><Groups /></Layout>} />
                 <Route path="/standings" element={<Layout><Standings /></Layout>} />
                 <Route path="/quiz" element={<Layout><Quiz /></Layout>} />
+                <Route path="/historia" element={<Layout><WorldCupHistory /></Layout>} />
+                <Route path="/historia/:year" element={<Layout><WorldCupDetail /></Layout>} />
                 <Route path="/qualified" element={<Layout><Qualified /></Layout>} />
                 <Route path="/cart" element={<Layout><Cart /></Layout>} />
                 <Route path="/login" element={<Layout><Login /></Layout>} />
