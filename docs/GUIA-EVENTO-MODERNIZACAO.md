@@ -567,7 +567,7 @@ Do seu computador, abra **`https://www.<seu-domínio>`** (com cadeado válido):
 2. **Select new migration scenario:** Source **SQL Server**, Target **Azure SQL Database**, mode **Offline** → **Select**.
 3. **Connect to source SQL Server:** **Server name** `10.30.1.4` (IP privado da VM do SQL) · **Authentication** SQL · login `adminsql` / `Partiunuvem@2026` · marque **Trust server certificate** → **Next**.
 4. **Select databases for migration:** marque **`FIFA2026Tickets`** → **Next**.
-5. **Connect to target Azure SQL Database:** **Server** `sql-prd-tk-cin-001.database.windows.net` · login `sqladmin` (ou `migrator`) / a senha → **Next**.
+5. **Connect to target Azure SQL Database:** **Server** `sql-prd-tk-cin-001.database.windows.net` · login `adminsql` (ou `migrator`) / a senha → **Next**.
    > 💡 Se a conexão ao destino falhar, libere no **firewall do Azure SQL** o IP de saída da `vm-data` (Networking → firewall rules), ou confirme **"Allow Azure services"** (Fase 5.1).
 6. **Map source and target databases:** mapeie `FIFA2026Tickets` (origem) → `FIFA2026Tickets` (destino).
 7. ⚠️ **Marque "Migrate Missing schema".** Como o destino está **vazio**, o DMS precisa criar **schema + tabelas + índices + views + procs…** antes de copiar os dados. _(Sem tabelas no destino e sem marcar isso, o wizard **não deixa avançar**.)_
